@@ -33,11 +33,11 @@ import java.util.Scanner;
             
              int i = st.executeUpdate(query);
             if(i>0){
-                System.out.println(i + "Record Inserted ");
+                System.out.println(i + "Record Updated ");
             }
             else
             {
-                System.out.println("No Record Inserted");
+                System.out.println("No Record Updated");
             }
             
             con.close();  
