@@ -38,7 +38,6 @@ public class Type4InsertUserData {
             
             st= con.createStatement();
             
-           //String query = "INSERT INTO  emp VALUES('107','xyz','5600','mhow')"  ;
            String query = "INSERT INTO  emp VALUES('"+id+"','"+name+"','"+salary+"','"+city+"')"  ;
             System.out.println("Query = " +query);
 
