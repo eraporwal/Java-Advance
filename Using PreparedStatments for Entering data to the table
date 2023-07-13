@@ -1,0 +1,68 @@
+
+package test2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class Type4PreparedStatement {
+    
+    public static void main(String[] args)
+    {
+        Connection con = null;
+        PreparedStatement pst = null;
+        
+        
+        try {
+             Scanner sc =new Scanner(System.in);
+            System.out.println("Enter ID :");
+            int id = sc.nextInt();
+            
+             System.out.println("Enter name :");
+             String name = sc.next();
+             
+              System.out.println("Enter Salary :");
+            int salary = sc.nextInt();
+            
+             System.out.println("Enter City:");
+            String city = sc.next();
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Driver Loaded");
+            
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db26","root" , "root");
+            System.out.println("Connected");
+            
+            pst= con.prepareStatement("INSERT INTO  emp VALUES(?,?,?,?)");
+            
+            pst.setInt(1, id);
+            pst.setString(2, name);
+            pst.setInt(3, salary);
+            pst.setString(4, city);
+            
+            
+           
+             int i = pst.executeUpdate();
+            if(i>0){
+                System.out.println(i + "Record Inserted ");
+            }
+            else
+            {
+                System.out.println("No Record Inserted");
+            }
+            
+            con.close();  
+        }
+        
+        catch (ClassNotFoundException | SQLException e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+}
+    
+    
+
